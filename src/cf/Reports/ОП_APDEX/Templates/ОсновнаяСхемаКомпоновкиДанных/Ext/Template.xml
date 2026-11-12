@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Замеры</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КлючеваяОперация</dataPath>
+			<field>КлючеваяОперация</field>
+			<title xsi:type="xs:string">Операция</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЦелевоеВремя</dataPath>
+			<field>ЦелевоеВремя</field>
+			<title xsi:type="xs:string">T, с</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Замеров</dataPath>
+			<field>Замеров</field>
+			<title xsi:type="xs:string">Замеров</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Удовлетворительно</dataPath>
+			<field>Удовлетворительно</field>
+			<title xsi:type="xs:string">≤ T</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Терпимо</dataPath>
+			<field>Терпимо</field>
+			<title xsi:type="xs:string">T..4T</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Неудовлетворительно</dataPath>
+			<field>Неудовлетворительно</field>
+			<title xsi:type="xs:string">&gt; 4T</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СредняяДлительность</dataPath>
+			<field>СредняяДлительность</field>
+			<title xsi:type="xs:string">Среднее, с</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>МаксДлительность</dataPath>
+			<field>МаксДлительность</field>
+			<title xsi:type="xs:string">Максимум, с</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Длительность</dataPath>
+			<field>Длительность</field>
+			<title xsi:type="xs:string">Длительность, с</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Вес</dataPath>
+			<field>Вес</field>
+			<title xsi:type="xs:string">Объём</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Пользователь</dataPath>
+			<field>Пользователь</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Комментарий</dataPath>
+			<field>Комментарий</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Замеры.КлючеваяОперация КАК КлючеваяОперация,
+	ЕСТЬNULL(Операции.ЦелевоеВремя, 0) КАК ЦелевоеВремя,
+	1 КАК Замеров,
+	ВЫБОР
+		КОГДА Замеры.Длительность &lt;= ЕСТЬNULL(Операции.ЦелевоеВремя, 0)
+			ТОГДА 1
+		ИНАЧЕ 0
+	КОНЕЦ КАК Удовлетворительно,
+	ВЫБОР
+		КОГДА Замеры.Длительность &gt; ЕСТЬNULL(Операции.ЦелевоеВремя, 0)
+				И Замеры.Длительность &lt;= 4 * ЕСТЬNULL(Операции.ЦелевоеВремя, 0)
+			ТОГДА 1
+		ИНАЧЕ 0
+	КОНЕЦ КАК Терпимо,
+	ВЫБОР
+		КОГДА Замеры.Длительность &gt; 4 * ЕСТЬNULL(Операции.ЦелевоеВремя, 0)
+			ТОГДА 1
+		ИНАЧЕ 0
+	КОНЕЦ КАК Неудовлетворительно,
+	Замеры.Длительность КАК СредняяДлительность,
+	Замеры.Длительность КАК МаксДлительность,
+	Замеры.Длительность КАК Длительность,
+	Замеры.Вес КАК Вес,
+	Замеры.Дата КАК Дата,
+	Замеры.Пользователь КАК Пользователь,
+	Замеры.Комментарий КАК Комментарий
+ИЗ
+	РегистрСведений.ОП_ЗамерыВремени КАК Замеры
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ОП_КлючевыеОперации КАК Операции
+		ПО Замеры.КлючеваяОперация = Операции.Ссылка
+ГДЕ
+	Замеры.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>APDEX</dataPath>
+		<expression>Выбор Когда Удовлетворительно = 1 Тогда 1 Когда Терпимо = 1 Тогда 0.5 Иначе 0 Конец</expression>
+		<title xsi:type="xs:string">APDEX</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>СекундНаЕдиницу</dataPath>
+		<expression>Выбор Когда Вес = 0 Тогда 0 Иначе Окр(Длительность / Вес, 3) Конец</expression>
+		<title xsi:type="xs:string">Секунд на единицу объёма</title>
+	</calculatedField>
+	<totalField>
+		<dataPath>ЦелевоеВремя</dataPath>
+		<expression>Максимум(ЦелевоеВремя)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Замеров</dataPath>
+		<expression>Сумма(Замеров)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Удовлетворительно</dataPath>
+		<expression>Сумма(Удовлетворительно)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Терпимо</dataPath>
+		<expression>Сумма(Терпимо)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Неудовлетворительно</dataPath>
+		<expression>Сумма(Неудовлетворительно)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СредняяДлительность</dataPath>
+		<expression>Окр(Среднее(СредняяДлительность), 3)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>МаксДлительность</dataPath>
+		<expression>Максимум(МаксДлительность)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Вес</dataPath>
+		<expression>Сумма(Вес)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СекундНаЕдиницу</dataPath>
+		<expression>Выбор Когда Сумма(Вес) = 0 Тогда 0 Иначе Окр(Сумма(Длительность) / Сумма(Вес), 3) Конец</expression>
+	</totalField>
+	<totalField>
+		<dataPath>APDEX</dataPath>
+		<expression>Выбор Когда Сумма(Замеров) = 0 Тогда 0 Иначе Окр((Сумма(Удовлетворительно) + Сумма(Терпимо) / 2) / Сумма(Замеров), 2) Конец</expression>
+	</totalField>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="xs:string">Начало периода</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="xs:string">Конец периода</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="xs:string">Период</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">APDEX по операциям</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЦелевоеВремя</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Замеров</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Удовлетворительно</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Терпимо</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Неудовлетворительно</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>APDEX</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СредняяДлительность</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>МаксДлительность</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Вес</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СекундНаЕдиницу</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">КлючеваяОперация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.ОП_КлючевыеОперации.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>3c8e1f2a-7b4d-4e6a-9c1f-2a5b8d7e6f02</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:userSettingID>3c8e1f2a-7b4d-4e6a-9c1f-2a5b8d7e6f03</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>3c8e1f2a-7b4d-4e6a-9c1f-2a5b8d7e6f01</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>КлючеваяОперация</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

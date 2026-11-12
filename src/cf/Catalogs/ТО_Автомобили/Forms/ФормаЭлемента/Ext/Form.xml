@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Автомобиль</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Наименование" id="1">
+			<DataPath>Объект.Description</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="ГосНомер" id="4">
+			<DataPath>Объект.ГосНомер</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Госномер</v8:content>
+				</v8:item>
+			</Title>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ContextMenu name="ГосНомерКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ГосНомерРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="ТО_МодельТС" id="7">
+			<DataPath>Объект.ТО_МодельТС</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Модель</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ТО_МодельТСКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ТО_МодельТСРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<CheckBoxField name="ПланироватьТО" id="10">
+			<DataPath>Объект.ПланироватьТО</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Планировать ТО</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ПланироватьТОКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="ПланироватьТОРасширеннаяПодсказка" id="12"/>
+		</CheckBoxField>
+		<InputField name="ДатаВводаВЭксплуатацию" id="13">
+			<DataPath>Объект.ДатаВводаВЭксплуатацию</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата ввода в эксплуатацию</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДатаВводаВЭксплуатациюКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="ДатаВводаВЭксплуатациюРасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<CheckBoxField name="ВыведенИзЭксплуатации" id="16">
+			<DataPath>Объект.ВыведенИзЭксплуатации</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выведен из эксплуатации</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ВыведенИзЭксплуатацииКонтекстноеМеню" id="17"/>
+			<ExtendedTooltip name="ВыведенИзЭксплуатацииРасширеннаяПодсказка" id="18"/>
+		</CheckBoxField>
+		<InputField name="Комментарий" id="19">
+			<DataPath>Объект.Комментарий</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарий</v8:content>
+				</v8:item>
+			</Title>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="20"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="21"/>
+		</InputField>
+		<UsualGroup name="ПоследниеПоказания" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Последние показания</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ПоследниеПоказанияРасширеннаяПодсказка" id="23"/>
+			<ChildItems>
+				<InputField name="Пробег" id="24">
+					<DataPath>Пробег</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пробег, км</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ПробегКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="ПробегРасширеннаяПодсказка" id="26"/>
+				</InputField>
+				<InputField name="ДатаПробега" id="27">
+					<DataPath>ДатаПробега</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата пробега</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДатаПробегаКонтекстноеМеню" id="28"/>
+					<ExtendedTooltip name="ДатаПробегаРасширеннаяПодсказка" id="29"/>
+				</InputField>
+				<InputField name="Моточасы" id="30">
+					<DataPath>Моточасы</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Моточасы, м/ч</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="МоточасыКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="МоточасыРасширеннаяПодсказка" id="32"/>
+				</InputField>
+				<InputField name="ДатаМоточасов" id="33">
+					<DataPath>ДатаМоточасов</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата моточасов</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДатаМоточасовКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="ДатаМоточасовРасширеннаяПодсказка" id="35"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="36">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ТО_Автомобили</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Пробег" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пробег, км</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>12</v8:Digits>
+					<v8:FractionDigits>1</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаПробега" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата пробега</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Моточасы" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Моточасы, м/ч</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>12</v8:Digits>
+					<v8:FractionDigits>1</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаМоточасов" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата моточасов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>ТО: заполнение тестового парка</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаполнить" id="30">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Заполнить</CommandName>
+				<ExtendedTooltip name="ФормаЗаполнитьРасширеннаяПодсказка" id="31"/>
+			</Button>
+			<Button name="ФормаУдалить" id="32">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Удалить</CommandName>
+				<ExtendedTooltip name="ФормаУдалитьРасширеннаяПодсказка" id="33"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="Пояснение" id="1">
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создаёт три тестовые модели с регламентом ТО, работы и материалы, автомобили, ежедневные документы «Учёт наработки» за указанный период и документ «Ввод остатков ТО» по части машин. Все элементы начинаются с префикса; команда «Удалить тестовые данные» помечает их на удаление.</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ПояснениеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ПояснениеРасширеннаяПодсказка" id="3"/>
+		</LabelDecoration>
+		<InputField name="Префикс" id="4">
+			<DataPath>Объект.Префикс</DataPath>
+			<ContextMenu name="ПрефиксКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ПрефиксРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="КоличествоАвтомобилей" id="7">
+			<DataPath>Объект.КоличествоАвтомобилей</DataPath>
+			<ContextMenu name="КоличествоАвтомобилейКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="КоличествоАвтомобилейРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="ДнейИстории" id="10">
+			<DataPath>Объект.ДнейИстории</DataPath>
+			<ContextMenu name="ДнейИсторииКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="ДнейИсторииРасширеннаяПодсказка" id="12"/>
+		</InputField>
+		<InputField name="ДоляСОстатками" id="13">
+			<DataPath>Объект.ДоляСОстатками</DataPath>
+			<ContextMenu name="ДоляСОстаткамиКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="ДоляСОстаткамиРасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<InputField name="СлучайноеЗерно" id="16">
+			<DataPath>Объект.СлучайноеЗерно</DataPath>
+			<ContextMenu name="СлучайноеЗерноКонтекстноеМеню" id="17"/>
+			<ExtendedTooltip name="СлучайноеЗерноРасширеннаяПодсказка" id="18"/>
+		</InputField>
+		<CheckBoxField name="ПроводитьДокументы" id="19">
+			<DataPath>Объект.ПроводитьДокументы</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ПроводитьДокументыКонтекстноеМеню" id="20"/>
+			<ExtendedTooltip name="ПроводитьДокументыРасширеннаяПодсказка" id="21"/>
+		</CheckBoxField>
+		<InputField name="Результат" id="22">
+			<DataPath>Результат</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<TitleLocation>None</TitleLocation>
+			<Height>6</Height>
+			<AutoMaxHeight>false</AutoMaxHeight>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="РезультатКонтекстноеМеню" id="23"/>
+			<ExtendedTooltip name="РезультатРасширеннаяПодсказка" id="24"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="25">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ТО_ЗаполнениеТестовогоПарка</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Результат" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Заполнить" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить тестовый парк</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Заполнить</Action>
+		</Command>
+		<Command name="Удалить" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить тестовые данные</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменяет проведение и помечает на удаление всё, что создано с этим префиксом. Физическое удаление — обработкой «Удаление помеченных объектов»</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Удалить</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Ввод остатков ТО</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаполнитьПарком" id="50">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ЗаполнитьПарком</CommandName>
+				<ExtendedTooltip name="ФормаЗаполнитьПаркомРасширеннаяПодсказка" id="51"/>
+			</Button>
+			<Button name="ФормаОбновитьТекущиеПоказания" id="52">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОбновитьТекущиеПоказания</CommandName>
+				<ExtendedTooltip name="ФормаОбновитьТекущиеПоказанияРасширеннаяПодсказка" id="53"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Номер" id="1">
+			<DataPath>Объект.Number</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="Дата" id="4">
+			<DataPath>Объект.Date</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+			<Events>
+				<Event name="OnChange">ДатаПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Ответственный" id="7">
+			<DataPath>Объект.Ответственный</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ответственный</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ОтветственныйКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="Комментарий" id="10">
+			<DataPath>Объект.Комментарий</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарий</v8:content>
+				</v8:item>
+			</Title>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="12"/>
+		</InputField>
+		<LabelDecoration name="Пояснение" id="54">
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По каждой паре «автомобиль + тип ТО» укажите последнее выполненное ТО до начала учёта: дату, норматив по регламенту модели (например, 30000) и показания счётчика на момент этого ТО. От этой записи система отсчитает следующее ТО.</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ПояснениеКонтекстноеМеню" id="55"/>
+			<ExtendedTooltip name="ПояснениеРасширеннаяПодсказка" id="56"/>
+		</LabelDecoration>
+		<Table name="Остатки" id="13">
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<DataPath>Объект.Остатки</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ОстаткиКонтекстноеМеню" id="14"/>
+			<AutoCommandBar name="ОстаткиКоманднаяПанель" id="15"/>
+			<ExtendedTooltip name="ОстаткиРасширеннаяПодсказка" id="16"/>
+			<SearchStringAddition name="ОстаткиСтрокаПоиска" id="17">
+				<AdditionSource>
+					<Item>Остатки</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОстаткиСтрокаПоискаКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="ОстаткиСтрокаПоискаРасширеннаяПодсказка" id="19"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ОстаткиСостояниеПросмотра" id="20">
+				<AdditionSource>
+					<Item>Остатки</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОстаткиСостояниеПросмотраКонтекстноеМеню" id="21"/>
+				<ExtendedTooltip name="ОстаткиСостояниеПросмотраРасширеннаяПодсказка" id="22"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ОстаткиУправлениеПоиском" id="23">
+				<AdditionSource>
+					<Item>Остатки</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ОстаткиУправлениеПоискомКонтекстноеМеню" id="24"/>
+				<ExtendedTooltip name="ОстаткиУправлениеПоискомРасширеннаяПодсказка" id="25"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="ОстаткиАвтомобиль" id="26">
+					<DataPath>Объект.Остатки.Автомобиль</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автомобиль</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ОстаткиАвтомобильКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ОстаткиАвтомобильРасширеннаяПодсказка" id="28"/>
+					<Events>
+						<Event name="OnChange">ОстаткиАвтомобильПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ОстаткиТипТО" id="29">
+					<DataPath>Объект.Остатки.ТипТО</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип ТО</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ОстаткиТипТОКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ОстаткиТипТОРасширеннаяПодсказка" id="31"/>
+					<Events>
+						<Event name="OnChange">ОстаткиТипТОПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ОстаткиДатаТО" id="32">
+					<DataPath>Объект.Остатки.ДатаТО</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата последнего ТО</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ОстаткиДатаТОКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ОстаткиДатаТОРасширеннаяПодсказка" id="34"/>
+				</InputField>
+				<InputField name="ОстаткиНормативТО" id="35">
+					<DataPath>Объект.Остатки.НормативТО</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Норматив ТО</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Точка регламента модели, на которой выполнено последнее ТО (например, 30000, 60000)</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="ОстаткиНормативТОКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ОстаткиНормативТОРасширеннаяПодсказка" id="37"/>
+				</InputField>
+				<InputField name="ОстаткиПоказания" id="38">
+					<DataPath>Объект.Остатки.Показания</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Показания на момент ТО</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ОстаткиПоказанияКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ОстаткиПоказанияРасширеннаяПодсказка" id="40"/>
+				</InputField>
+				<InputField name="ОстаткиТекущиеПоказания" id="41">
+					<DataPath>Объект.Остатки.ТекущиеПоказания</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текущие показания</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Последнее показание из регистра «Показания счётчиков» на дату документа — для контроля</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="ОстаткиТекущиеПоказанияКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ОстаткиТекущиеПоказанияРасширеннаяПодсказка" id="43"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="44">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ТО_ВводОстатков</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьПарком" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить парком</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить строки по всем автомобилям с флажком «Планировать ТО», у которых ещё нет ТО в учёте</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьПарком</Action>
+		</Command>
+		<Command name="ОбновитьТекущиеПоказания" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить текущие показания</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОбновитьТекущиеПоказания</Action>
+		</Command>
+	</Commands>
+</Form>

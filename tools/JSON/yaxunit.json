@@ -1,0 +1,17 @@
+{
+  "filter": {
+    "extensions": [
+      "YAXUNIT"
+    ],
+    "tags": [
+      "ТО",
+      "ОП",
+      "RMQ"
+    ]
+  },
+  "reportFormat": "jUnit",
+  "reportPath": "D:\\Otus_1c_projects\\repo\\build\\reports\\yaxunit",
+  "exitCode": "D:\\Otus_1c_projects\\repo\\build\\reports\\yaxunit\\exit-code.txt",
+  "closeAfterTests": true,
+  "showReport": false
+}

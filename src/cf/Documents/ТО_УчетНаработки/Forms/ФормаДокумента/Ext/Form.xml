@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Учёт наработки</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаполнитьПарком" id="40">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ЗаполнитьПарком</CommandName>
+				<ExtendedTooltip name="ФормаЗаполнитьПаркомРасширеннаяПодсказка" id="41"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Номер" id="1">
+			<DataPath>Объект.Number</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="Дата" id="4">
+			<DataPath>Объект.Date</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+			<Events>
+				<Event name="OnChange">ДатаПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Ответственный" id="7">
+			<DataPath>Объект.Ответственный</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ответственный</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ОтветственныйКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="Комментарий" id="10">
+			<DataPath>Объект.Комментарий</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарий</v8:content>
+				</v8:item>
+			</Title>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="12"/>
+		</InputField>
+		<Table name="Показания" id="13">
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<DataPath>Объект.Показания</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ПоказанияКонтекстноеМеню" id="14"/>
+			<AutoCommandBar name="ПоказанияКоманднаяПанель" id="15"/>
+			<ExtendedTooltip name="ПоказанияРасширеннаяПодсказка" id="16"/>
+			<SearchStringAddition name="ПоказанияСтрокаПоиска" id="17">
+				<AdditionSource>
+					<Item>Показания</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПоказанияСтрокаПоискаКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="ПоказанияСтрокаПоискаРасширеннаяПодсказка" id="19"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ПоказанияСостояниеПросмотра" id="20">
+				<AdditionSource>
+					<Item>Показания</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПоказанияСостояниеПросмотраКонтекстноеМеню" id="21"/>
+				<ExtendedTooltip name="ПоказанияСостояниеПросмотраРасширеннаяПодсказка" id="22"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ПоказанияУправлениеПоиском" id="23">
+				<AdditionSource>
+					<Item>Показания</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ПоказанияУправлениеПоискомКонтекстноеМеню" id="24"/>
+				<ExtendedTooltip name="ПоказанияУправлениеПоискомРасширеннаяПодсказка" id="25"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="Автомобиль" id="26">
+					<DataPath>Объект.Показания.Автомобиль</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автомобиль</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="АвтомобильКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="АвтомобильРасширеннаяПодсказка" id="28"/>
+					<Events>
+						<Event name="OnChange">ПоказанияАвтомобильПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ТипСчетчика" id="29">
+					<DataPath>Объект.Показания.ТипСчетчика</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип счётчика</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ТипСчетчикаКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ТипСчетчикаРасширеннаяПодсказка" id="31"/>
+					<Events>
+						<Event name="OnChange">ПоказанияТипСчетчикаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Значение" id="32">
+					<DataPath>Объект.Показания.Значение</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ЗначениеКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ЗначениеРасширеннаяПодсказка" id="34"/>
+					<Events>
+						<Event name="OnChange">ПоказанияЗначениеПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ПредыдущееЗначение" id="35">
+					<DataPath>Объект.Показания.ПредыдущееЗначение</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предыдущее значение</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ПредыдущееЗначениеКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ПредыдущееЗначениеРасширеннаяПодсказка" id="37"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="38">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ТО_УчетНаработки</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьПарком" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить парком</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗаполнитьПарком</Action>
+		</Command>
+	</Commands>
+</Form>

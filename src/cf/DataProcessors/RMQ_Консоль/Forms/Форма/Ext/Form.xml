@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Консоль RMQ</v8:content>
+		</v8:item>
+	</Title>
+	<Width>80</Width>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Подключение" id="1">
+			<DataPath>Подключение</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключение</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ПодключениеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ПодключениеРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="ТочкаОбмена" id="4">
+			<DataPath>ТочкаОбмена</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Точка обмена</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ТочкаОбменаКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ТочкаОбменаРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="КлючМаршрутизации" id="7">
+			<DataPath>КлючМаршрутизации</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ маршрутизации</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="КлючМаршрутизацииКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="КлючМаршрутизацииРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="Очередь" id="10">
+			<DataPath>Очередь</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очередь</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ОчередьКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="ОчередьРасширеннаяПодсказка" id="12"/>
+		</InputField>
+		<InputField name="Тело" id="13">
+			<DataPath>Тело</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тело JSON</v8:content>
+				</v8:item>
+			</Title>
+			<Height>8</Height>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="ТелоКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="ТелоРасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<CommandBar name="КомандыКонсоли" id="16">
+			<ExtendedTooltip name="КомандыКонсолиРасширеннаяПодсказка" id="30"/>
+			<ChildItems>
+				<Button name="ПроверитьПодключение" id="17">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.ПроверитьПодключение</CommandName>
+					<ExtendedTooltip name="ПроверитьПодключениеРасширеннаяПодсказка" id="18"/>
+				</Button>
+				<Button name="ОтправитьТекст" id="19">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.ОтправитьТекст</CommandName>
+					<ExtendedTooltip name="ОтправитьТекстРасширеннаяПодсказка" id="20"/>
+				</Button>
+				<Button name="ПрочитатьОчередь" id="21">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.ПрочитатьОчередь</CommandName>
+					<ExtendedTooltip name="ПрочитатьОчередьРасширеннаяПодсказка" id="22"/>
+				</Button>
+				<Button name="СоздатьТопологию" id="23">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.СоздатьТопологию</CommandName>
+					<ExtendedTooltip name="СоздатьТопологиюРасширеннаяПодсказка" id="24"/>
+				</Button>
+				<Button name="ЗапуститьОтправку" id="25">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.ЗапуститьОтправку</CommandName>
+					<ExtendedTooltip name="ЗапуститьОтправкуРасширеннаяПодсказка" id="26"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+		<InputField name="Результат" id="27">
+			<DataPath>Результат</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат</v8:content>
+				</v8:item>
+			</Title>
+			<Height>12</Height>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="РезультатКонтекстноеМеню" id="28"/>
+			<ExtendedTooltip name="РезультатРасширеннаяПодсказка" id="29"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="30">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.RMQ_Консоль</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Подключение" id="31">
+			<Type>
+				<v8:Type>cfg:CatalogRef.RMQ_Подключения</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТочкаОбмена" id="32">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>255</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КлючМаршрутизации" id="33">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>255</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Очередь" id="34">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>255</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Тело" id="35">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Результат" id="36">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПроверитьПодключение" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить подключение</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПроверитьПодключение</Action>
+		</Command>
+		<Command name="ОтправитьТекст" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить JSON</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ОтправитьТекст</Action>
+		</Command>
+		<Command name="ПрочитатьОчередь" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочитать очередь</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ПрочитатьОчередь</Action>
+		</Command>
+		<Command name="СоздатьТопологию" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать топологию</v8:content>
+				</v8:item>
+			</Title>
+			<Action>СоздатьТопологию</Action>
+		</Command>
+		<Command name="ЗапуститьОтправку" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запустить отправку</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ЗапуститьОтправку</Action>
+		</Command>
+	</Commands>
+</Form>

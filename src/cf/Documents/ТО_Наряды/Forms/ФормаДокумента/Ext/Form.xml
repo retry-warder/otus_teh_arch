@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.20">
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="СоздатьСкладскуюЗаявку" id="200">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СоздатьСкладскуюЗаявку</CommandName>
+				<ExtendedTooltip name="СоздатьСкладскуюЗаявкуРасширеннаяПодсказка" id="201"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="50">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="51"/>
+			<ChildItems>
+				<InputField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+				</InputField>
+				<InputField name="Дата" id="4">
+					<DataPath>Объект.Date</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+				</InputField>
+				<UsualGroup name="ГруппаТС" id="68">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа ТС</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа ТС</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаТСРасширеннаяПодсказка" id="69"/>
+					<ChildItems>
+						<InputField name="Автомобиль" id="7">
+							<DataPath>Объект.Автомобиль</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="АвтомобильКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="АвтомобильРасширеннаяПодсказка" id="9"/>
+							<Events>
+								<Event name="OnChange">АвтомобильПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ТО_МодельТС" id="65">
+							<DataPath>Объект.ТО_МодельТС</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ТО_МодельТСКонтекстноеМеню" id="66"/>
+							<ExtendedTooltip name="ТО_МодельТСРасширеннаяПодсказка" id="67"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаАвтомобиль" id="52">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа автомобиль</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа автомобиль</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<VerticalAlign>Top</VerticalAlign>
+			<Behavior>Usual</Behavior>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаАвтомобильРасширеннаяПодсказка" id="53"/>
+			<ChildItems>
+				<InputField name="ТипТО" id="59">
+					<DataPath>Объект.ТипТО</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ТипТОКонтекстноеМеню" id="60"/>
+					<ExtendedTooltip name="ТипТОРасширеннаяПодсказка" id="61"/>
+				</InputField>
+				<UsualGroup name="ГруппаНаработкаТекущееТО" id="79">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наработка текущее ТО</v8:content>
+						</v8:item>
+					</Title>
+					<TitleTextColor>#008000</TitleTextColor>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>NormalSeparation</Representation>
+					<BackColor>#FFFF99</BackColor>
+					<ExtendedTooltip name="ГруппаНаработкаТекущееТОРасширеннаяПодсказка" id="80"/>
+					<ChildItems>
+						<InputField name="НаработкаНорматив" id="10">
+							<DataPath>Объект.НаработкаНорматив</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>План</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>12</Width>
+							<ContextMenu name="НаработкаНормативКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="НаработкаНормативРасширеннаяПодсказка" id="12"/>
+						</InputField>
+						<InputField name="НаработкаФактНаМоментТО" id="13">
+							<DataPath>Объект.НаработкаФактНаМоментТО</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Факт</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>12</Width>
+							<ContextMenu name="НаработкаФактНаМоментТОКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="НаработкаФактНаМоментТОРасширеннаяПодсказка" id="15"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаНаработкаПоследнееТО" id="81">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наработка последнее ТО</v8:content>
+						</v8:item>
+					</Title>
+					<TitleTextColor>#008000</TitleTextColor>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>NormalSeparation</Representation>
+					<BackColor>#CCFFCC</BackColor>
+					<ExtendedTooltip name="ГруппаНаработкаПоследнееТОРасширеннаяПодсказка" id="82"/>
+					<ChildItems>
+						<InputField name="ПлановаяНаработкаПоследнегоТО" id="73">
+							<DataPath>Объект.ПлановаяНаработкаПоследнегоТО</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>План</v8:content>
+								</v8:item>
+							</Title>
+							<Width>12</Width>
+							<ContextMenu name="ПлановаяНаработкаПоследнегоТОКонтекстноеМеню" id="74"/>
+							<ExtendedTooltip name="ПлановаяНаработкаПоследнегоТОРасширеннаяПодсказка" id="75"/>
+						</InputField>
+						<InputField name="ФактПоследнегоТО" id="76">
+							<DataPath>Объект.ФактПоследнегоТО</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Факт</v8:content>
+								</v8:item>
+							</Title>
+							<Width>12</Width>
+							<ContextMenu name="ФактПоследнегоТОКонтекстноеМеню" id="77"/>
+							<ExtendedTooltip name="ФактПоследнегоТОРасширеннаяПодсказка" id="78"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаФакт" id="54">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Факт</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>#008000</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа факт</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаФактРасширеннаяПодсказка" id="55"/>
+			<ChildItems>
+				<InputField name="ФактДатаТО" id="16">
+					<DataPath>Объект.ФактДатаТО</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<BackColor>#FFFF99</BackColor>
+					<ContextMenu name="ФактДатаТОКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="ФактДатаТОРасширеннаяПодсказка" id="18"/>
+					<Events>
+						<Event name="OnChange">ФактДатаТОПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="НаработкаФакт" id="19">
+					<DataPath>Объект.НаработкаФакт</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<BackColor>#FFFF99</BackColor>
+					<ContextMenu name="НаработкаФактКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="НаработкаФактРасширеннаяПодсказка" id="21"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ВыполненныеРаботы" id="62">
+			<DataPath>Объект.ВыполненныеРаботы</DataPath>
+			<TitleLocation>Top</TitleLocation>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Height>3</Height>
+			<HorizontalStretch>true</HorizontalStretch>
+			<MultiLine>true</MultiLine>
+			<ClearButton>true</ClearButton>
+			<BackColor>#FFFF99</BackColor>
+			<ContextMenu name="ВыполненныеРаботыКонтекстноеМеню" id="63"/>
+			<ExtendedTooltip name="ВыполненныеРаботыРасширеннаяПодсказка" id="64"/>
+		</InputField>
+		<Table name="ВидыТО" id="25">
+			<Representation>List</Representation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Объект.ВидыТО</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ВидыТОКонтекстноеМеню" id="26"/>
+			<AutoCommandBar name="ВидыТОКоманднаяПанель" id="27"/>
+			<ExtendedTooltip name="ВидыТОРасширеннаяПодсказка" id="28"/>
+			<SearchStringAddition name="ВидыТОСтрокаПоиска" id="29">
+				<AdditionSource>
+					<Item>ВидыТО</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ВидыТОСтрокаПоискаКонтекстноеМеню" id="30"/>
+				<ExtendedTooltip name="ВидыТОСтрокаПоискаРасширеннаяПодсказка" id="31"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ВидыТОСостояниеПросмотра" id="32">
+				<AdditionSource>
+					<Item>ВидыТО</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ВидыТОСостояниеПросмотраКонтекстноеМеню" id="33"/>
+				<ExtendedTooltip name="ВидыТОСостояниеПросмотраРасширеннаяПодсказка" id="34"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ВидыТОУправлениеПоиском" id="35">
+				<AdditionSource>
+					<Item>ВидыТО</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ВидыТОУправлениеПоискомКонтекстноеМеню" id="36"/>
+				<ExtendedTooltip name="ВидыТОУправлениеПоискомРасширеннаяПодсказка" id="37"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="ВидыТОНомерСтроки" id="38">
+					<DataPath>Объект.ВидыТО.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ВидыТОНомерСтрокиКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ВидыТОНомерСтрокиРасширеннаяПодсказка" id="40"/>
+				</LabelField>
+				<InputField name="ВидыТОВидТО" id="41">
+					<DataPath>Объект.ВидыТО.ВидТО</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ВидыТОВидТОКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ВидыТОВидТОРасширеннаяПодсказка" id="43"/>
+				</InputField>
+				<InputField name="ВидыТОНаработкаНорматив" id="44">
+					<DataPath>Объект.ВидыТО.НаработкаНорматив</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ВидыТОНаработкаНормативКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ВидыТОНаработкаНормативРасширеннаяПодсказка" id="46"/>
+				</InputField>
+				<InputField name="ВидыТОНаработкаНормативОбщ" id="56">
+					<DataPath>Объект.ВидыТО.НаработкаНормативОбщ</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ВидыТОНаработкаНормативОбщКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="ВидыТОНаработкаНормативОбщРасширеннаяПодсказка" id="58"/>
+				</InputField>
+				<InputField name="ВидыТООжидаемыйФакт" id="70">
+					<DataPath>Объект.ВидыТО.ОжидаемыйФакт</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ВидыТООжидаемыйФактКонтекстноеМеню" id="71"/>
+					<ExtendedTooltip name="ВидыТООжидаемыйФактРасширеннаяПодсказка" id="72"/>
+				</InputField>
+				<InputField name="ВидыТОКомментарий" id="47">
+					<DataPath>Объект.ВидыТО.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ВидыТОКомментарийКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ВидыТОКомментарийРасширеннаяПодсказка" id="49"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<LabelDecoration name="ТО_СкладскаяЗаявка" id="202">
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Складская заявка: нет</v8:content>
+				</v8:item>
+			</Title>
+			<Hyperlink>true</Hyperlink>
+			<ContextMenu name="СкладскаяЗаявкаКонтекстноеМеню" id="203"/>
+			<ExtendedTooltip name="СкладскаяЗаявкаРасширеннаяПодсказка" id="204"/>
+			<Events>
+				<Event name="Click">СкладскаяЗаявкаНажатие</Event>
+			</Events>
+		</LabelDecoration>
+		<InputField name="Комментарий" id="22">
+			<DataPath>Объект.Комментарий</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="23"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="24"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ТО_Наряды</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="ЗаявкаСсылка" id="206">
+			<Type>
+				<v8:Type>cfg:DocumentRef.ТО_СкладскаяЗаявка</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СоздатьСкладскуюЗаявку" id="205">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать складскую заявку</v8:content>
+				</v8:item>
+			</Title>
+			<Action>СоздатьСкладскуюЗаявку</Action>
+		</Command>
+	</Commands>
+</Form>

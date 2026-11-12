@@ -1,0 +1,34 @@
+# Структура по vanessa-bootstrap: всё, что получается при сборке и прогонах, лежит в build/ и в git не попадает
+.env
+build/
+out/
+allure-report/
+allure-results/
+.scannerwork
+
+# Отчёты прогонов тестов (allure, junit, логи, скриншоты, видео)
+reports/
+*.log
+exit-code.txt
+
+# Собранные внешние обработки: в репозитории только исходники XML из src/epf
+*.epf
+*.erf
+
+# Служебный файл выгрузки конфигурации
+ConfigDumpInfo.xml
+
+# Временные файлы Office
+~$*
+
+# Видео: тяжёлые файлы (лимит GitHub — 100 МБ на файл)
+*.mp4
+video-temp/
+video-concat/
+
+# Служебные файлы ОС и редакторов
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
